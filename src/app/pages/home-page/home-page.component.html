@@ -1,9 +1,25 @@
 <carrousel [bannerResult]="bannerResult"></carrousel>
-<app-spiner-loading *ngIf="isLoading"></app-spiner-loading>
+
 <film-list [TrendingResult]="trendingMovieResult"></film-list>
+
 <div class="flex justify-center mt-6">
-  <button (click)="prevPage()" class="px-4 py-2 bg-gray-600 text-white mr-2" [disabled]="currentPage === 1">Anterior</button>
-  <button (click)="nextPage()"  class="px-4 py-2 bg-gray-600 text-white" [disabled]="currentPage === totalPages">Siguiente</button>
+  <button
+    (click)="prevPage()"
+    class="px-4 py-2 bg-gray-600 text-white mr-2"
+    [disabled]="currentPage === 1"
+  >
+    Anterior
+  </button>
+
+  <button
+    (click)="nextPage()"
+    class="px-4 py-2 bg-gray-600 text-white"
+    [disabled]="currentPage === totalPages"
+  >
+    Siguiente
+  </button>
 </div>
 
-<p class="text-center text-white mt-4">Página {{currentPage}} de {{totalPages}}</p>
+<p class="text-center text-white mt-4">
+  Página {{ currentPage }} de {{ totalPages }}
+</p>

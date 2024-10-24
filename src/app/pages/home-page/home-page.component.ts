@@ -1,49 +1,43 @@
-import {Component, OnInit} from '@angular/core';
-import {MovieApiServiceService} from "../../service/movie-api-service.service";
-import {Result} from "../../interfaces/film.interface";
-import {TrendingResult} from "../../interfaces/trending.interface";
-import {Genre} from "../../interfaces/gender.interface";
-import {GenderFilm} from "../../interfaces/gender_film.interface";
+import { Component, OnInit, inject } from '@angular/core';
+import { Result } from '../../interfaces/film.interface';
+import { TrendingResult } from '../../interfaces/trending.interface';
+import { MovieApiServiceService } from '../../service/movie-api-service.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrl: './home-page.component.css',
 })
 export class HomePageComponent implements OnInit {
- constructor(private service:MovieApiServiceService) {}
+  private readonly service = inject(MovieApiServiceService);
 
-  public bannerResult:Result[]= [];
-  public trendingMovieResult:TrendingResult[] = [];
-  public isLoading:boolean = false;
-
+  public bannerResult: Result[] = [];
+  public trendingMovieResult: TrendingResult[] = [];
+  public isLoading: boolean = false;
 
   currentPage: number = 1;
   totalPages: number = 0;
 
   ngOnInit() {
-
-   this.bannerData();
-   this.trendingData(this.currentPage);
-
+    this.bannerData();
+    this.trendingData(this.currentPage);
   }
 
   bannerData() {
-   this.service.bannerApiData().subscribe((res)=> {
+    this.service.bannerApiData().subscribe((res) => {
       console.log(res, 'resultado');
       this.bannerResult = res.results;
-   })
+    });
   }
 
-  trendingData(page:number) {
+  trendingData(page: number) {
     this.isLoading = true;
-
-    this.service.getAllMovies_bypage(page).subscribe((res)=> {
+    this.service.getAllMoviesByPage(page).subscribe((res) => {
       console.log(res, 'resultado de populares');
       this.trendingMovieResult = res.results;
-      this.totalPages =res.total_pages;
+      this.totalPages = res.total_pages;
       this.isLoading = false;
-    })
+    });
   }
 
   nextPage() {
@@ -53,7 +47,6 @@ export class HomePageComponent implements OnInit {
     }
 
     console.log(this.currentPage);
-
   }
 
   prevPage() {
@@ -63,6 +56,4 @@ export class HomePageComponent implements OnInit {
     }
     console.log(this.currentPage);
   }
-
-
 }
