@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
 
   trendingData(page: number) {
     this.isLoading = true;
-    this.service.getAllMoviesByPage(page).subscribe((res) => {
+    this.service.getAllMoviesBypage(page).subscribe((res) => {
       console.log(res, 'resultado de populares');
       this.trendingMovieResult = res.results;
       this.totalPages = res.total_pages;

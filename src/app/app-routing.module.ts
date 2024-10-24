@@ -1,22 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { DetailMoviePageComponent } from './pages/detail-movie-page/detail-movie-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+
 
 // TODO: LazyLoad.
 const routes: Routes = [
   {
     path: '',
-    component: LoginPageComponent,
+    loadChildren: () => import('./pages/login-page/login-page.module').then(m => m.LoginPageModule)
   },
   {
     path: 'home',
-    component: HomePageComponent,
-  },
-  {
-    path: 'movie/:id',
-    component: DetailMoviePageComponent,
+    loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
   },
   {
     path: '**',

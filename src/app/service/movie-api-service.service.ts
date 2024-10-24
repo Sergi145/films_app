@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Film } from '../interfaces/film.interface';
 import { environemnt } from '../environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieApiServiceService {
-  private readonly http = Injectable(HttpClient);
+  private readonly http = inject(HttpClient);
 
   // Obtener lista del baner
   bannerApiData(): Observable<any> {
@@ -16,7 +15,7 @@ export class MovieApiServiceService {
   }
 
   // Obtener lista de peliculas
-  getAllMovies_bypage(page: number): Observable<any> {
+  getAllMoviesBypage(page: number): Observable<any> {
     return this.http.get<any>(`${environemnt.url}/trending/movie/day?page=${page}`);
   }
 

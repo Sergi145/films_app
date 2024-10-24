@@ -14,7 +14,7 @@
       <div
         class="w-full cursor-pointer"
         *ngFor="let trending of TrendingResult"
-        [routerLink]="['/movie', trending.id]"
+        [routerLink]="['movie', trending.id]"
       >
         <div
           class="bg-gray-800 rounded-lg m-h-64 p-2 transform hover:translate-y-2 hover:shadow-xl transition duration-300 min-h-full flex flex-col"

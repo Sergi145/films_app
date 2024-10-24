@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { DetailMoviePageComponent } from './pages/detail-movie-page/detail-movie-page.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MovieApiServiceService} from "./service/movie-api-service.service";
 import { CarrouselComponent } from './component/carrousel/carrousel.component';
@@ -19,7 +18,6 @@ import { SpinerLoadingComponent } from './component/spiner-loading/spiner-loadin
   declarations: [
     AppComponent,
     HomePageComponent,
-    DetailMoviePageComponent,
     CarrouselComponent,
     FilmListComponent,
     SelectFilterComponent,

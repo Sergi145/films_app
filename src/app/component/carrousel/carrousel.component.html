@@ -1,13 +1,12 @@
 <div id="default-carousel" class="relative w-full" data-carousel="static">
   <!-- Carousel wrapper -->
   <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-    <!-- Item 1 -->
-    @for(res of bannerResult){
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+    <!-- Iterar sobre bannerResult -->
+    <div *ngFor="let res of bannerResult" class="hidden duration-700 ease-in-out" data-carousel-item>
       <img
         src="https://image.tmdb.org/t/p/original/{{ res.backdrop_path }}"
         class="absolute opacity-50 block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-        alt="..."
+        alt="{{ res.title }}"
       />
       <div class="flex items-center justify-center h-full relative">
         <p
@@ -17,7 +16,6 @@
         </p>
       </div>
     </div>
-    }
   </div>
 
   <button

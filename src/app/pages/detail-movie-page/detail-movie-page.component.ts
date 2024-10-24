@@ -10,8 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   standalone: true,
 })
 export class DetailMoviePageComponent implements OnInit {
-  private readonly service = inject(MovieApiServiceService);
-  movieDetail: any;
+ private readonly service = inject(MovieApiServiceService);
+ movieDetail: any;
 
   constructor(private router: ActivatedRoute, private location: Location) {}
 
