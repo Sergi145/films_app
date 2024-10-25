@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Result} from "../../interfaces/film.interface";
+import {Film} from "../../interfaces/film.interface";
 
 @Component({
   selector: 'carrousel',
@@ -7,7 +7,7 @@ import {Result} from "../../interfaces/film.interface";
   styleUrl: './carrousel.component.css'
 })
 export class CarrouselComponent {
-  @Input() bannerResult: Result[] = [];
+  @Input() bannerResult: Film[] = [];
 
   ngOnInit(): void {}
 }

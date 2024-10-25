@@ -5,7 +5,7 @@ import {DetailMoviePageComponent} from "../detail-movie-page/detail-movie-page.c
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomePageComponent,
   },
   {

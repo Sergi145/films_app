@@ -1,11 +1,11 @@
-export interface Film {
+export interface Film_response {
   page:          number;
-  results:       Result[];
+  results:       Film[];
   total_pages:   number;
   total_results: number;
 }
 
-export interface Result {
+export interface Film {
   backdrop_path:     string;
   id:                number;
   title?:            string;

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Genre } from '../../interfaces/gender.interface';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
 import { GenderFilm } from '../../interfaces/gender_film.interface';
+import {Film} from "../../interfaces/film.interface";
 
 @Component({
   selector: 'select-filter',
@@ -11,7 +12,7 @@ import { GenderFilm } from '../../interfaces/gender_film.interface';
 export class SelectFilterComponent {
   @Input() genres: Genre[] = [];
   @Input() genresFilm: GenderFilm[] = [];
-  @Output() sendmov = new EventEmitter<string>();
+  @Output() sendmov = new EventEmitter<Film[]>();
 
   constructor(private movieService: MovieApiServiceService) {}
 
@@ -20,8 +21,8 @@ export class SelectFilterComponent {
   }
 
   getGenres(): void {
-    this.movieService.getMovieGenres().subscribe((genres) => {
-      this.genres = genres.genres;
+    this.movieService.getMovieGenres().subscribe((genero) => {
+      this.genres = genero.genres;
       //console.log(genres);
     });
   }

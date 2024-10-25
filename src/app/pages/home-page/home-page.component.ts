@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Result } from '../../interfaces/film.interface';
-import { TrendingResult } from '../../interfaces/trending.interface';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
+import {Film} from "../../interfaces/film.interface";
 
 @Component({
   selector: 'app-home-page',
@@ -11,21 +10,21 @@ import { MovieApiServiceService } from '../../service/movie-api-service.service'
 export class HomePageComponent implements OnInit {
   private readonly service = inject(MovieApiServiceService);
 
-  public bannerResult: Result[] = [];
-  public trendingMovieResult: TrendingResult[] = [];
+  public bannerResult: Film[] = [];
+  public trendingMovieResult: Film[] = [];
   public isLoading: boolean = false;
 
   currentPage: number = 1;
   totalPages: number = 0;
 
   ngOnInit() {
-    this.bannerData();
+    this.bannerFilm();
     this.trendingData(this.currentPage);
   }
 
-  bannerData() {
+  bannerFilm() {
     this.service.bannerApiData().subscribe((res) => {
-      console.log(res, 'resultado');
+      console.log(res, 'resultado de las peliculas de la semana');
       this.bannerResult = res.results;
     });
   }
