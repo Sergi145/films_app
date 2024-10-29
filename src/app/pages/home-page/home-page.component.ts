@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
 import {Film} from "../../interfaces/film.interface";
+import {SpinerServiceService} from "../../service/spiner-service.service";
 
 @Component({
   selector: 'app-home-page',
@@ -9,6 +10,7 @@ import {Film} from "../../interfaces/film.interface";
 })
 export class HomePageComponent implements OnInit {
   private readonly service = inject(MovieApiServiceService);
+  private readonly serviceSniper = inject(SpinerServiceService);
 
   public bannerResult: Film[] = [];
   public trendingMovieResult: Film[] = [];
@@ -20,6 +22,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.bannerFilm();
     this.trendingData(this.currentPage);
+
   }
 
   bannerFilm() {
@@ -30,12 +33,12 @@ export class HomePageComponent implements OnInit {
   }
 
   trendingData(page: number) {
-    this.isLoading = true;
+    this.serviceSniper.show();
     this.service.getAllMoviesBypage(page).subscribe((res) => {
       console.log(res, 'resultado de populares');
       this.trendingMovieResult = res.results;
       this.totalPages = res.total_pages;
-      this.isLoading = false;
+      this.serviceSniper.hide();
     });
   }
 

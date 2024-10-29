@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MovieApiServiceService} from "./service/movie-api-service.service";
 import {TokenInterceptorService} from "./service/token-interceptor.service";
+import {SpinerLoadingComponent} from "./component/spiner-loading/spiner-loading.component";
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SpinerLoadingComponent
   ],
   imports: [
     BrowserModule,

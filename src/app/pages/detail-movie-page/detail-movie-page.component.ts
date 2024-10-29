@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import {SpinerServiceService} from "../../service/spiner-service.service";
 
 @Component({
   selector: 'app-detail-movie-page',
@@ -10,8 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   standalone: true,
 })
 export class DetailMoviePageComponent implements OnInit {
- private readonly service = inject(MovieApiServiceService);
- movieDetail: any;
+  private readonly serviceSniper = inject(SpinerServiceService);
+  private readonly service = inject(MovieApiServiceService);
+  movieDetail: any;
 
   constructor(private router: ActivatedRoute, private location: Location) {}
 
@@ -27,9 +29,12 @@ export class DetailMoviePageComponent implements OnInit {
   }
 
   getMovie(id: string) {
+    this.serviceSniper.show();
     this.service.getMovieDetails(id).subscribe((result) => {
       console.log(result, 'reultados de los detalles de pelicula');
       this.movieDetail = result;
+      this.serviceSniper.hide();
+
     });
   }
 }

@@ -5,7 +5,7 @@ import {HomeRoutingModule} from "./home-routing.module";
 import {CarrouselComponent} from "../../component/carrousel/carrousel.component";
 import {FilmListComponent} from "../../component/film-list/film-list.component";
 import {SelectFilterComponent} from "../../component/select-filter/select-filter.component";
-import {SpinerLoadingComponent} from "../../component/spiner-loading/spiner-loading.component";
+
 
 
 @NgModule({
@@ -13,8 +13,7 @@ import {SpinerLoadingComponent} from "../../component/spiner-loading/spiner-load
     HomePageComponent,
     CarrouselComponent,
     FilmListComponent,
-    SelectFilterComponent,
-    SpinerLoadingComponent
+    SelectFilterComponent
   ],
   imports: [
     CommonModule,
