@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {authGuard} from "./auth/auth.guard";
 
 
 // TODO: LazyLoad.
@@ -10,12 +11,13 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule),
+    canMatch: [authGuard]
   },
   {
     path: '**',
-    redirectTo: 'home',
-  },
+    redirectTo: '',
+  }
 ];
 
 @NgModule({
