@@ -12,12 +12,10 @@ export class SpinerServiceService {
 
   show() {
     this.spinnerSubject.next(true);
-    console.log('activando spiner');
   }
 
   hide() {
     this.spinnerSubject.next(false);
-    console.log('escondiendo spiner');
 
   }
 

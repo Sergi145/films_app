@@ -14,7 +14,6 @@ export class HomePageComponent implements OnInit {
 
   public bannerResult: Film[] = [];
   public trendingMovieResult: Film[] = [];
-  public isLoading: boolean = false;
 
   currentPage: number = 1;
   totalPages: number = 0;
@@ -27,7 +26,6 @@ export class HomePageComponent implements OnInit {
 
   bannerFilm() {
     this.service.bannerApiData().subscribe((res) => {
-      console.log(res, 'resultado de las peliculas de la semana');
       this.bannerResult = res.results;
     });
   }
@@ -35,7 +33,6 @@ export class HomePageComponent implements OnInit {
   trendingData(page: number) {
     this.serviceSniper.show();
     this.service.getAllMoviesBypage(page).subscribe((res) => {
-      console.log(res, 'resultado de populares');
       this.trendingMovieResult = res.results;
       this.totalPages = res.total_pages;
       this.serviceSniper.hide();

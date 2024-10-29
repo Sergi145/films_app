@@ -30,7 +30,6 @@ export class DetailMoviePageComponent implements OnInit {
   getMovie(id: string) {
     this.serviceSniper.show();
     this.service.getMovieDetails(id).subscribe((result) => {
-      console.log(result, 'reultados de los detalles de pelicula');
       this.movieDetail = result;
       this.serviceSniper.hide();
 
