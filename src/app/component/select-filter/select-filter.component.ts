@@ -13,6 +13,7 @@ export class SelectFilterComponent {
   @Input() genres: Genre[] = [];
   @Input() genresFilm: GenderFilm[] = [];
   @Output() sendmov = new EventEmitter<Film[]>();
+  @Output() sendGenre = new EventEmitter<any>;
 
   constructor(private movieService: MovieApiServiceService) {}
 
@@ -31,14 +32,16 @@ export class SelectFilterComponent {
   onGenreChange(event: Event): void {
     //acceso al valor del select
     const genreId = (event.target as HTMLSelectElement).value;
-    this.getMoviesByGenre(Number(genreId));
+    const page=1;
+    this.sendGenre.emit(genreId);
+    this.getMoviesByGenre(Number(genreId),Number(page));
     console.log('el numero de genero es' + genreId);
   }
   //obtiene peliculas por genero seleccionado
-  getMoviesByGenre(genreId: number): void {
-    this.movieService.getMoviesByGenre(genreId).subscribe((res) => {
+  getMoviesByGenre(genreId: number, page:number): void {
+    this.movieService.getAllMoviesByGenres(genreId,page).subscribe((res) => {
       this.sendmov.emit(res.results);
-      console.log(this.sendmov, 'el resultado final');
+
     });
   }
 }

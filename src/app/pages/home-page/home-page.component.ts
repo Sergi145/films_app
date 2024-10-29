@@ -17,10 +17,11 @@ export class HomePageComponent implements OnInit {
 
   currentPage: number = 1;
   totalPages: number = 0;
+  selectedGenreId: any;
 
   ngOnInit() {
     this.bannerFilm();
-    this.trendingData(this.currentPage);
+    this.trendingData(this.currentPage, this.selectedGenreId);
 
   }
 
@@ -30,9 +31,12 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  trendingData(page: number) {
+  trendingData(page: number, genreId:number) {
     this.serviceSniper.show();
-    this.service.getAllMoviesBypage(page).subscribe((res) => {
+    const genreFilter= genreId || 28;
+    //TODO
+    //conseguir el valor del combo
+    this.service.getAllMoviesByGenres(genreFilter,page).subscribe((res) => {
       this.trendingMovieResult = res.results;
       this.totalPages = res.total_pages;
       this.serviceSniper.hide();
@@ -42,7 +46,7 @@ export class HomePageComponent implements OnInit {
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.trendingData(this.currentPage);
+      this.trendingData(this.currentPage, this.selectedGenreId);
     }
 
     console.log(this.currentPage);
@@ -51,8 +55,14 @@ export class HomePageComponent implements OnInit {
   prevPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.trendingData(this.currentPage);
+      this.trendingData(this.currentPage, this.selectedGenreId);
     }
     console.log(this.currentPage);
+  }
+
+  onGenreChange(genreId: number) {
+    this.selectedGenreId = genreId; // Actualizar el genreId seleccionado
+    this.currentPage = 1; // Reiniciar la página actual
+    this.trendingData(this.currentPage, this.selectedGenreId); // Volver a cargar los datos con el nuevo género
   }
 }

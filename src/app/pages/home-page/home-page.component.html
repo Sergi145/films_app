@@ -1,5 +1,5 @@
 <carrousel [bannerResult]="bannerResult"></carrousel>
-<film-list [TrendingResult]="trendingMovieResult"></film-list>
+<film-list [TrendingResult]="trendingMovieResult" (genderSelected)="onGenreChange($event)"></film-list>
 
 <div class="flex justify-center mt-6">
   <button

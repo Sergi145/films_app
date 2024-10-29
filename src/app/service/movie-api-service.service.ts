@@ -16,10 +16,6 @@ export class MovieApiServiceService {
     return this.http.get<Film_response>(`${environemnt.url}/trending/all/week`);
   }
 
-  // Obtener lista de peliculas
-  getAllMoviesBypage(page: number): Observable<Film_response> {
-    return this.http.get<Film_response>(`${environemnt.url}/trending/movie/day?page=${page}`);
-  }
 
   // Obtener detalles de peliculas
   getMovieDetails(id: string): Observable<Film> {
@@ -32,7 +28,12 @@ export class MovieApiServiceService {
   }
 
   // Obtener películas filtradas por género
-  getMoviesByGenre(genreId: number): Observable<Film_response> {
-    return this.http.get<Film_response>(`${environemnt.url}/discover/movie?with_genres=${genreId}`);
+  getAllMoviesByGenres(genreId: number, page:number): Observable<Film_response> {
+    return this.http.get<Film_response>(`${environemnt.url}/discover/movie`,{
+      params: {
+        with_genres: genreId.toString(),
+        page: page.toString()
+      }
+    });
   }
 }

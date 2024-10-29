@@ -1,20 +1,20 @@
-import {inject} from "@angular/core";
-import {Router} from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivateFn, CanMatchFn, Route, RouterStateSnapshot, UrlSegment, } from '@angular/router';
 
 
-export const authGuard = () => {
-  const router = inject(Router);
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  console.log('Auth Guard is running. User is logged in:', isLoggedIn);
+//No hay necesidad de crear una clase, simplemente definiendo una función flecha y exportándola podemos utilizar sus funcionalidades de guard en el app-routing
+export const canActivateGuard: CanActivateFn = ( route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  console.log('CanActivate');
+  console.log({ route, state });
 
-
-  if (isLoggedIn) {
-    return true; // Permite el acceso
-  } else {
-    router.navigate(['']); // Redirige al login si no está "autenticado"
-    return false;
-  }
+  return false;
 };
 
+export const canMatchGuard: CanMatchFn = ( //Tipado CanMatchFN
+  route: Route,
+  segments: UrlSegment[]
+) => {
+  console.log('CanMatch');
+  console.log({ route, segments });
 
-
+  return false;
+};
