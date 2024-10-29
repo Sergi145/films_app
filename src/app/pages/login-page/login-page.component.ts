@@ -10,10 +10,12 @@ import {Router} from "@angular/router";
 export class LoginPageComponent {
   // TODO: FormControl => Formbuilder.
 
+  loginError: string = '';
+
   constructor(private fb:FormBuilder, private router: Router) {
   }
     public myForm:FormGroup = this.fb.group({
-      name:['sergi',[Validators.required, Validators.minLength(3)]],
+      name:['',[Validators.required, Validators.minLength(3)]],
       password:['',[Validators.required, Validators.min(0)]]
     })
 
@@ -49,14 +51,28 @@ export class LoginPageComponent {
   }
 
   login() {
-    localStorage.setItem('isLoggedIn', 'true'); // Simula el inicio de sesión
-    this.router.navigate(['home']); // Redirige a la página protegida
+
+    const validUser ={
+      name:'Sergi',
+      password:'1234'
+    }
+
+    const {name, password} = this.myForm.value;
+
+    if (name === validUser.name && password === validUser.password) {
+      localStorage.setItem('isLoggedIn', 'true'); // Marca que el usuario ha iniciado sesión
+      this.router.navigate(['home']); // Redirige a la página protegida
+      this.loginError = '';
+    } else {
+      this.loginError = "Credenciales incorrectas";
+      setTimeout(() => {
+        this.loginError = '';
+      }, 2000);
+    }
+
   }
 
-  logout() {
-    localStorage.removeItem('isLoggedIn'); // Elimina el estado de sesión
-    this.router.navigate(['/login']); // Redirige al login
-  }
+
 
 
 

@@ -48,6 +48,9 @@
         Register
       </button>
     </form>
+    <div *ngIf="loginError">
+      <p class="text-red-700 text-lg"><span>{{loginError}}</span></p>
+    </div>
   </div>
 
   />
