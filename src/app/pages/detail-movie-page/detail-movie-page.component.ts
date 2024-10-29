@@ -8,7 +8,6 @@ import {SpinerServiceService} from "../../service/spiner-service.service";
   selector: 'app-detail-movie-page',
   templateUrl: './detail-movie-page.component.html',
   styleUrl: './detail-movie-page.component.css',
-  standalone: true,
 })
 export class DetailMoviePageComponent implements OnInit {
   private readonly serviceSniper = inject(SpinerServiceService);

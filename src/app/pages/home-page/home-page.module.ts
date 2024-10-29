@@ -5,6 +5,7 @@ import {HomeRoutingModule} from "./home-routing.module";
 import {CarrouselComponent} from "../../component/carrousel/carrousel.component";
 import {FilmListComponent} from "../../component/film-list/film-list.component";
 import {SelectFilterComponent} from "../../component/select-filter/select-filter.component";
+import {DetailMoviePageComponent} from "../detail-movie-page/detail-movie-page.component";
 
 
 
@@ -13,7 +14,8 @@ import {SelectFilterComponent} from "../../component/select-filter/select-filter
     HomePageComponent,
     CarrouselComponent,
     FilmListComponent,
-    SelectFilterComponent
+    SelectFilterComponent,
+    DetailMoviePageComponent
   ],
   imports: [
     CommonModule,
