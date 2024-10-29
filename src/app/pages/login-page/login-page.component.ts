@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'login-page',
@@ -9,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class LoginPageComponent {
   // TODO: FormControl => Formbuilder.
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, private router: Router) {
   }
     public myForm:FormGroup = this.fb.group({
       name:['sergi',[Validators.required, Validators.minLength(3)]],
@@ -45,6 +46,16 @@ export class LoginPageComponent {
       }
 
       return '';
+  }
+
+  login() {
+    localStorage.setItem('isLoggedIn', 'true'); // Simula el inicio de sesión
+    this.router.navigate(['home']); // Redirige a la página protegida
+  }
+
+  logout() {
+    localStorage.removeItem('isLoggedIn'); // Elimina el estado de sesión
+    this.router.navigate(['/login']); // Redirige al login
   }
 
 
