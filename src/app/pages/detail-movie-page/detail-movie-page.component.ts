@@ -3,6 +3,8 @@ import { MovieApiServiceService } from '../../service/movie-api-service.service'
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import {SpinerServiceService} from "../../service/spiner-service.service";
+import {Film} from "../../interfaces/film.interface";
+
 
 @Component({
   selector: 'app-detail-movie-page',
@@ -12,7 +14,7 @@ import {SpinerServiceService} from "../../service/spiner-service.service";
 export class DetailMoviePageComponent implements OnInit {
   private readonly serviceSniper = inject(SpinerServiceService);
   private readonly service = inject(MovieApiServiceService);
-  movieDetail: any;
+  movieDetail:any;
 
   constructor(private router: ActivatedRoute, private location: Location) {}
 

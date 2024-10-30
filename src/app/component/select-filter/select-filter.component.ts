@@ -13,7 +13,7 @@ export class SelectFilterComponent {
   @Input() genres: Genre[] = [];
   @Input() genresFilm: GenderFilm[] = [];
   @Output() sendmov = new EventEmitter<Film[]>();
-  @Output() sendGenre = new EventEmitter<any>;
+  @Output() sendGenre = new EventEmitter<any>();
 
   constructor(private movieService: MovieApiServiceService) {}
 

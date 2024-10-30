@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {canActivateGuard, canMatchGuard} from "./auth/auth.guard";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
+import {canMatchGuard} from "./auth/auth.guard";
+
 
 
 // TODO: LazyLoad.
@@ -13,7 +14,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule),
-    canMatch: [canMatchGuard] //Anclamos la función del canMatch
+
   },
   {
     path: '**',

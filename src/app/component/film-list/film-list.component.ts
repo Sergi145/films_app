@@ -12,14 +12,14 @@ export class FilmListComponent {
   @Input() TrendingResult: Film[] = [];
   public genres: Genre[] = [];
   public genresFilm: GenderFilm[] = [];
-  public genderId:any;
+  public genderId:number | null = null;
   @Output() genderSelected = new EventEmitter<number>();
 
-  recibeData($event: any) {
+  recibeData($event: Film[]) {
     this.TrendingResult = $event;
   }
 
-  recibeGender($event: any) {
+  recibeGender($event: number) {
     this.genderId = $event;
     console.log('generoids  '+this.genderId);
     this.genderSelected.emit(this.genderId);

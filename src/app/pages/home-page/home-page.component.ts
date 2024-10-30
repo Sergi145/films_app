@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
 
   currentPage: number = 1;
   totalPages: number = 0;
-  selectedGenreId: any;
+  selectedGenreId!: number;
 
   ngOnInit() {
     this.bannerFilm();
@@ -34,8 +34,6 @@ export class HomePageComponent implements OnInit {
   trendingData(page: number, genreId:number) {
     this.serviceSniper.show();
     const genreFilter= genreId || 28;
-    //TODO
-    //conseguir el valor del combo
     this.service.getAllMoviesByGenres(genreFilter,page).subscribe((res) => {
       this.trendingMovieResult = res.results;
       this.totalPages = res.total_pages;
