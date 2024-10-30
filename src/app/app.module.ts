@@ -8,7 +8,6 @@ import {TokenInterceptorService} from "./service/token-interceptor.service";
 import {SpinerLoadingComponent} from "./component/spiner-loading/spiner-loading.component";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +25,9 @@ import {SpinerLoadingComponent} from "./component/spiner-loading/spiner-loading.
       useClass: TokenInterceptorService,
       multi: true
     }
+  ],
+  exports: [
+
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {environemnt} from "../../environment/environment";
 
 @Component({
   selector: 'login-page',
@@ -52,14 +53,11 @@ export class LoginPageComponent {
 
   login() {
 
-    const validUser ={
-      name:'Sergi',
-      password:'1234'
-    }
+
 
     const {name, password} = this.myForm.value;
 
-    if (name === validUser.name && password === validUser.password) {
+    if (name === environemnt.validUser.name && password === environemnt.validUser.password) {
       localStorage.setItem('isLoggedIn', 'true'); // Marca que el usuario ha iniciado sesión
       this.router.navigate(['home']); // Redirige a la página protegida
       this.loginError = '';

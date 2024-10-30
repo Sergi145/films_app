@@ -6,6 +6,8 @@ import {CarrouselComponent} from "../../component/carrousel/carrousel.component"
 import {FilmListComponent} from "../../component/film-list/film-list.component";
 import {SelectFilterComponent} from "../../component/select-filter/select-filter.component";
 import {DetailMoviePageComponent} from "../detail-movie-page/detail-movie-page.component";
+import {ButtonSesionComponent} from "../../component/button-sesion/button-sesion.component";
+
 
 
 
@@ -15,7 +17,8 @@ import {DetailMoviePageComponent} from "../detail-movie-page/detail-movie-page.c
     CarrouselComponent,
     FilmListComponent,
     SelectFilterComponent,
-    DetailMoviePageComponent
+    DetailMoviePageComponent,
+    ButtonSesionComponent
   ],
   imports: [
     CommonModule,
