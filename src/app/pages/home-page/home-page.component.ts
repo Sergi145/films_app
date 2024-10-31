@@ -1,14 +1,16 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {Component, OnInit, inject, AfterViewInit} from '@angular/core';
 import { MovieApiServiceService } from '../../service/movie-api-service.service';
 import {Film} from "../../interfaces/film.interface";
 import {SpinerServiceService} from "../../service/spiner-service.service";
+
+
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit  {
   private readonly service = inject(MovieApiServiceService);
   private readonly serviceSniper = inject(SpinerServiceService);
 
@@ -20,8 +22,8 @@ export class HomePageComponent implements OnInit {
   selectedGenreId!: number;
 
   ngOnInit() {
-    this.bannerFilm();
     this.trendingData(this.currentPage, this.selectedGenreId);
+    this.bannerFilm();
 
   }
 

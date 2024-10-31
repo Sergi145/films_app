@@ -6,12 +6,14 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MovieApiServiceService} from "./service/movie-api-service.service";
 import {TokenInterceptorService} from "./service/token-interceptor.service";
 import {SpinerLoadingComponent} from "./component/spiner-loading/spiner-loading.component";
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpinerLoadingComponent
+    SpinerLoadingComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
